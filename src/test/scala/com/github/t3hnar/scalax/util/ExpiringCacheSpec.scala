@@ -53,7 +53,21 @@ class ExpiringCacheSpec extends Specification {
       cache.map.size must eventually(beEqualTo(1))
 
       cache.remove(0)
+      cache.get(0) must beNone
       cache.map.size must eventually(beEqualTo(0))
+    }
+
+    "not remove values if not expired" in new ExpiringCacheScope {
+      cache.map must haveSize(0)
+      cache.queryCount mustEqual 0
+
+      cache.put(0, "0")
+      cache.get(0) must beSome("0")
+      cache.map.size must eventually(beEqualTo(1))
+
+      cache.cleanExpired()
+      cache.get(0) must beSome("0")
+      cache.map.size must eventually(beEqualTo(1))
     }
 
   }

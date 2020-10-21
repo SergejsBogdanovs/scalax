@@ -15,11 +15,13 @@ class RichDurationSpec extends Specification {
 
     "convert finite durations" in forall(List(
       (60.minutes, 1.hour),
+      (30.minutes, 30.minutes),
       (2000.millis, 2.seconds),
       (2000.micros, 2.millis),
       (2000.nanos, 2.micros),
       (2000000.nanos, 2.millis),
       (48.hours, 2.days),
+      (60.seconds, 1.minute),
       (5.seconds, 5.seconds),
       (0.seconds, 0.seconds),
       (0.days, 0.days),

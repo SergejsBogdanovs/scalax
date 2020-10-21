@@ -22,6 +22,10 @@ class AnyImplicitsSpec extends Specification {
       (new A {}: Any).asInstanceOfOpt[Any] must beSome
       (new A {}: Any).asInstanceOfOpt[B] must beNone
 
+      (new B {}: Any).asInstanceOfOpt[B] must beSome
+      (new B {}: Any).asInstanceOfOpt[Any] must beSome
+      (new B {}: Any).asInstanceOfOpt[A] must beNone
+
       (new A with B {}: Any).asInstanceOfOpt[A] must beSome
       (new A with B {}: Any).asInstanceOfOpt[B] must beSome
       (new A with B {}: Any).asInstanceOfOpt[A] must beSome
