@@ -101,17 +101,20 @@ package object scalax {
     }
   }
 
-  implicit class RichTry[T](val self: Try[T]) extends AnyVal {
-    def fold[B](onFailure: Throwable => B)(f: T => B): B = self match {
-      case Success(x) => f(x)
-      case Failure(x) => onFailure(x)
-    }
-
-    def toEither: Either[Throwable, T] = self match {
-      case Success(x) => Right(x)
-      case Failure(x) => Left(x)
-    }
-  }
+  /**
+   * Not needed anymore
+   */
+  //  implicit class RichTry[T](val self: Try[T]) extends AnyVal {
+  //    def fold[B](onFailure: Throwable => B)(f: T => B): B = self match {
+  //      case Success(x) => f(x)
+  //      case Failure(x) => onFailure(x)
+  //    }
+  //
+  //    def toEither: Either[Throwable, T] = self match {
+  //      case Success(x) => Right(x)
+  //      case Failure(x) => Left(x)
+  //    }
+  //  }
 
   implicit class RichSetMap[M, S](val self: Map[M, Set[S]]) extends AnyVal {
     def getOrEmpty(m: M): Set[S] = self.getOrElse(m, Set.empty)
@@ -123,12 +126,15 @@ package object scalax {
     }
   }
 
-  implicit class RichEither[A, B](val self: Either[A, B]) extends AnyVal {
-    def toTry(implicit ev: A <:< Throwable): Try[B] = self match {
-      case Right(x) => Success(x)
-      case Left(x)  => Failure(ev(x))
-    }
-  }
+  /**
+   * Not needed anymore
+   */
+  //  implicit class RichEither[A, B](val self: Either[A, B]) extends AnyVal {
+  //    def toTry(implicit ev: A <:< Throwable): Try[B] = self match {
+  //      case Right(x) => Success(x)
+  //      case Left(x)  => Failure(ev(x))
+  //    }
+  //  }
 
   implicit class RichClass(val self: Class[_]) extends AnyVal {
     def simpleName: String = {
