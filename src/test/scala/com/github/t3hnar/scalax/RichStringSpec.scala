@@ -115,6 +115,7 @@ class RichStringSpec extends Specification {
 
     "return None for invalid boolean strings" in {
       "test".toBooleanOpt must beNone
+      "".toBooleanOpt must beNone
     }
   }
 }

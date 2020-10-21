@@ -2,7 +2,7 @@ package com.github.t3hnar.scalax
 
 import org.specs2.mutable.Specification
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 
 class RichTrySpec extends Specification {
 
